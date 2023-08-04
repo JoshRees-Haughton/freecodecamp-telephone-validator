@@ -1,10 +1,23 @@
 function telephoneCheck(str) {
-    //Check that the string is all numbers, dashes or brackets
+    var outBool = false
   
-    //Check for 10 digits
+    const testReg = /(1?)(\s?)([(]?)\d{3}([)]?)\s?-?\d{3}-?\s?\d{4}/g;
+    console.log(str.match(testReg));
   
-    //If not 10 digits, then 1 is the first digit
-    return true;
+    //Check for the right number of digits (10 or 11)
+    const lengthReg = /(1?)(\s?)([(]?)\d{3}([)]?)\s?-?\d{3}-?\s?\d{4}/g;
+    if (lengthReg.test(str)) {
+      outBool = true;
+      console.log(str.match(lengthReg))
+    } else {
+      outBool = false;
+      console.log(str.match(lengthReg))
+    }
+  
+    //Check that any brackets are closed and in the right order
+  
+    console.log(outBool)
+    return outBool;
   }
   
-  telephoneCheck("555-555-5555");
+  telephoneCheck("1 (555) 555 5555");
